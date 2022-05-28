@@ -2,8 +2,15 @@ import React from "react";
 import { View, StyleSheet, Text, Image, Pressable } from "react-native";
 import logoCorre from "../../assets/iconCorre.png";
 import clouds from "../../assets/clouds.png";
+import { useNavigation } from "@react-navigation/native";
 
 export function Welcome() {
+    
+  function goToSignIn() {
+    const navigation = useNavigation();
+    navigation.navigate("SignIn");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.clouds}>
@@ -25,7 +32,7 @@ export function Welcome() {
         </Text>
       </View>
       <View style={styles.SubmitOrRegister}>
-        <Pressable style={styles.registerButton}>
+        <Pressable style={styles.registerButton} onPress={goToSignIn}>
           <Text style={{ fontSize: 20, fontWeight: "700" }}>Registre-se</Text>
         </Pressable>
         <View>
@@ -61,9 +68,9 @@ const styles = StyleSheet.create({
   },
   clouds: {
     position: "absolute",
-  
- top: 70,
- left: -5,
+
+    top: 70,
+    left: -5,
   },
 
   container: {
