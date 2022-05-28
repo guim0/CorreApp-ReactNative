@@ -5,6 +5,7 @@ import {
   Image,
   Pressable,
   TextInput,
+  ScrollView,
 } from "react-native";
 import arrow from "../../assets/arrow.png";
 import logoCorre from "../../assets/iconCorre.png";
@@ -13,63 +14,32 @@ import { ButtonLabel } from "../components/ButtonLabel";
 import { useNavigation } from "@react-navigation/native";
 
 export function SignIn() {
-  const [isActiveMusic, setIsActiveMusic] = useState<boolean>(false);
-  const [isActiveBuffet, setIsActiveBuffet] = useState<boolean>(false);
-  const [isActiveMarriage, setIsActiveMarriage] = useState<boolean>(false);
-  const [isActiveWooden, setIsActiveWooden] = useState<boolean>(false);
-  const [isActiveBarber, setIsActiveBarber] = useState<boolean>(false);
-  const [isActiveTransport, setIsActiveTransport] = useState<boolean>(false);
+  const [name, setName] = useState<string>('');
+  const [interestsItems, setInterestItems] = useState([]);
 
   const navigation = useNavigation();
   function BacktoSubmit() {
     navigation.navigate("Welcome");
   }
 
-
-
   const typesOfService = [
     {
-      id: 0,
-      name: "Música",
-      isActive: isActiveMusic,
-      onClick: () => setIsActiveMusic(!isActiveMusic),
-    },
-    {
-      id: 1,
-      name: "Buffet",
-      isActive: isActiveBuffet,
-      onClick: () => setIsActiveBuffet(!isActiveBuffet),
-    },
-    {
-      id: 2,
-      name: "Casamento",
-      isActive: isActiveMarriage,
-      onClick: () => setIsActiveMarriage(!isActiveMarriage),
-    },
-    {
-      id: 3,
-      name: "Serralheiro",
-      isActive: isActiveWooden,
-      onClick: () => setIsActiveWooden(!isActiveWooden),
-    },
-    {
-      id: 4,
-      name: "Barbeiro",
-      isActive: isActiveBarber,
-      onClick: () => setIsActiveBarber(!isActiveBarber),
-    },
-    {
-      id: 5,
-      name: "Transporte",
-      isActive: isActiveTransport,
-      onClick: () => setIsActiveTransport(!isActiveTransport),
+      name: name,
     },
   ];
 
+  const handleInterest = () => {
+    setInterestItems([...interestsItems, name]);
+    setName("");
+  };
+
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Pressable style={{ flexDirection: "row", alignItems: "center" }} onPress={BacktoSubmit}>
+        <Pressable
+          style={{ flexDirection: "row", alignItems: "center" }}
+          onPress={BacktoSubmit}
+        >
           <Image style={{ marginRight: 10 }} source={arrow}></Image>
           <Text style={{ fontSize: 14, color: "white", fontWeight: "700" }}>
             Voltar
@@ -77,8 +47,11 @@ export function SignIn() {
         </Pressable>
         <Image source={logoCorre} style={{ width: 45, height: 45 }} />
       </View>
+      {name !== "" && (
+        <Text style={{ color: "white" }}> Você digitou: {name}</Text>
+      )}
 
-      <View style={{marginBottom:-60, marginLeft:-40}}>
+      <View style={{ marginBottom: -30, marginLeft: -40 }}>
         <Text style={{ fontSize: 14, color: "#FFFFFF" }}>Insira</Text>
         <Text style={{ fontSize: 24, color: "#ECBD15", fontWeight: "700" }}>
           Suas Informações aqui:
@@ -111,28 +84,40 @@ export function SignIn() {
             placeholder="Digite aqui..."
             accessibilityLabel="O que você busca ?"
             style={styles.input}
+            onChangeText={(newText) => setName(newText)}
+            value={name}
+            onSubmitEditing={handleInterest}
           />
         </View>
+
         <View
           style={{
             flexDirection: "row",
             flexWrap: "wrap",
             padding: 12,
             alignItems: "center",
-            maxWidth: 320,
+            maxWidth: 350,
+            marginTop: 20,
           }}
         >
-          {typesOfService.map((items) => (
-            <ButtonLabel {...items} />
-          ))}
+          {interestsItems.map((items) => {
+            return <ButtonLabel name={items} />;
+          })}
         </View>
+
+        <View style={styles.ClearFilters}>
+          <Pressable onPress={() => setInterestItems([])}>
+            <Text style={{ color: "white" }}>Limpar Filtros</Text>
+          </Pressable>
+        </View>
+
         <View style={styles.SubmitArea}>
           <Pressable style={styles.submitButton}>
             <Text style={styles.submitButtonText}>Registre-se</Text>
           </Pressable>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -142,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0D0D0D",
-    justifyContent: 'space-between'
+    justifyContent: "space-between",
   },
   header: {
     width: "80%",
@@ -161,16 +146,16 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   input: {
-    maxWidth: 320,
-    minWidth: 300,
+    maxWidth: 350,
+    minWidth: 320,
     backgroundColor: "#FFFFFF",
     borderRadius: 6,
     padding: 20,
     marginBottom: 20,
   },
   SubmitArea: {
-    marginTop: 50,
-    marginBottom: 60
+    marginTop: 20,
+    marginBottom: 60,
   },
   submitButton: {
     borderRadius: 4,
@@ -183,5 +168,8 @@ const styles = StyleSheet.create({
   submitButtonText: {
     fontSize: 20,
     fontWeight: "700",
+  },
+  ClearFilters: {
+    padding: 5,
   },
 });
