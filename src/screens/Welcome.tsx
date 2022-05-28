@@ -5,9 +5,8 @@ import clouds from "../../assets/clouds.png";
 import { useNavigation } from "@react-navigation/native";
 
 export function Welcome() {
-    
+  const navigation = useNavigation();
   function goToSignIn() {
-    const navigation = useNavigation();
     navigation.navigate("SignIn");
   }
 
