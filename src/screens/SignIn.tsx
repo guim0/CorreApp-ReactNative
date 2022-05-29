@@ -14,7 +14,7 @@ import { ButtonLabel } from "../components/ButtonLabel";
 import { useNavigation } from "@react-navigation/native";
 
 export function SignIn() {
-  const [name, setName] = useState<string>('');
+  const [name, setName] = useState<string>("");
   const [interestsItems, setInterestItems] = useState([]);
 
   const navigation = useNavigation();
@@ -22,6 +22,9 @@ export function SignIn() {
     navigation.navigate("Welcome");
   }
 
+  function GoToHome() {
+    navigation.navigate("Home");
+  }
   const typesOfService = [
     {
       name: name,
@@ -112,7 +115,7 @@ export function SignIn() {
         </View>
 
         <View style={styles.SubmitArea}>
-          <Pressable style={styles.submitButton}>
+          <Pressable style={styles.submitButton} onPress={GoToHome}>
             <Text style={styles.submitButtonText}>Registre-se</Text>
           </Pressable>
         </View>

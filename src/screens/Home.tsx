@@ -9,11 +9,15 @@ import {
 } from "react-native";
 import React, { Component } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { SearchBar } from "react-native-screens";
+import { SearchInput } from "../components/SearchInput";
 
 export function Home() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text>Home</Text>
+    <View>
+        <SearchInput/>
+    </View>
     </ScrollView>
   );
 }
