@@ -3,7 +3,9 @@ export declare global {
     interface RootParamList {
       Welcome: undefined;
       SignIn: undefined;
-      Home: undefined;
+      Home: {
+        name: string
+      };
     }
   }
 }

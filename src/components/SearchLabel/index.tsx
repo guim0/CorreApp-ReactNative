@@ -7,13 +7,23 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
-import SearchInputIcon from "../../assets/serviceIcon.png";
-import FilterButtonIcon from "../../assets/filterIcon.png";
 
-export function SearchInput() {
+type SearchInputProps = {
+  userName?: string;
+};
+export function SearchInput({ userName }: SearchInputProps) {
   return (
     <View style={styles.container}>
-      <Image style={{ marginBottom: -5 }} source={SearchInputIcon} />
+      <View style={{flexDirection: 'row', alignItems: 'baseline', justifyContent: "space-between"}}>
+      <Image
+        source={require("../../assets/serviceIcon.png")}
+      />
+      {userName && (
+        <Text style={{ fontSize: 16, color: "white", fontWeight: "600", paddingBottom:20 }}>
+          Olá, {userName}
+        </Text>
+      )}
+        </View>
       <View>
         <TextInput
           style={styles.SearchInput}
@@ -23,7 +33,7 @@ export function SearchInput() {
         <Pressable style={styles.filterButton}>
           <Text style={{ fontSize: 16, fontWeight: "600" }}>
             FILTRAR POR{"    "}
-            <Image  source={FilterButtonIcon} />
+            <Image source={require("../../assets/filterIcon.png")} />
           </Text>
         </Pressable>
       </View>
@@ -41,8 +51,6 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 8,
     backgroundColor: "white",
-
-
   },
   filterButton: {
     alignItems: "center",
@@ -51,5 +59,4 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#ECBD15",
   },
-
 });

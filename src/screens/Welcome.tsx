@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, Pressable } from "react-native";
-import logoCorre from "../../assets/iconCorre.png";
-import clouds from "../../assets/clouds.png";
+
 import { useNavigation } from "@react-navigation/native";
 
 export function Welcome() {
@@ -13,21 +12,27 @@ export function Welcome() {
   return (
     <View style={styles.container}>
       <View style={styles.clouds}>
-        <Image source={clouds} width={150} height={150} />
+        <Image
+          source={require("../assets/clouds.png")}
+          width={150}
+          height={150}
+        />
       </View>
       <View style={styles.icon}>
-        <Image source={logoCorre} width={150} height={150} />
+        <Image
+          source={require("../assets/iconCorre.png")}
+          width={150}
+          height={150}
+        />
       </View>
 
       <View style={styles.description}>
         <Text style={{ color: "#ECBD15", fontSize: 20, fontWeight: "700" }}>
           !CORRE
         </Text>
-        <Text style={styles.titleText}>Olá, seja bem vindo!</Text>
+        <Text style={styles.titleText}>Olá, seja bem vindx!</Text>
         <Text style={{ fontSize: 14, color: "#C6C6C6" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          scelerisque suscipit ex vitae ornare, nunc egestas pulvinar neque,
-          eget tempor augue.
+         Somos uma solução focada em serviços e prestações dos mesmos, para você usuario encontrar o que precisa!
         </Text>
       </View>
       <View style={styles.SubmitOrRegister}>

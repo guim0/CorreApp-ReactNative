@@ -7,14 +7,15 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import arrow from "../../assets/arrow.png";
-import logoCorre from "../../assets/iconCorre.png";
+
 import React, { useState } from "react";
 import { ButtonLabel } from "../components/ButtonLabel";
 import { useNavigation } from "@react-navigation/native";
 
 export function SignIn() {
-  const [name, setName] = useState<string>("");
+const [name, setName] = useState<string>('')
+
+  const [interest, setInterest] = useState<string>("");
   const [interestsItems, setInterestItems] = useState([]);
 
   const navigation = useNavigation();
@@ -23,17 +24,14 @@ export function SignIn() {
   }
 
   function GoToHome() {
-    navigation.navigate("Home");
+    navigation.navigate("Home", {name: name});
   }
-  const typesOfService = [
-    {
-      name: name,
-    },
-  ];
 
   const handleInterest = () => {
-    setInterestItems([...interestsItems, name]);
-    setName("");
+
+    //@ts-ignore
+    setInterestItems([...interestsItems, interest]);
+    setInterest("");
   };
 
   return (
@@ -43,15 +41,15 @@ export function SignIn() {
           style={{ flexDirection: "row", alignItems: "center" }}
           onPress={BacktoSubmit}
         >
-          <Image style={{ marginRight: 10 }} source={arrow}></Image>
+          <Image style={{ marginRight: 10 }} source={require("../assets/arrow.png")}></Image>
           <Text style={{ fontSize: 14, color: "white", fontWeight: "700" }}>
             Voltar
           </Text>
         </Pressable>
-        <Image source={logoCorre} style={{ width: 45, height: 45 }} />
+        <Image source={require("../assets/iconCorre.png")} style={{ width: 45, height: 45 }} />
       </View>
-      {name !== "" && (
-        <Text style={{ color: "white" }}> Você digitou: {name}</Text>
+      {interest !== "" && (
+        <Text style={{ color: "white" }}> Você digitou: {interest}</Text>
       )}
 
       <View style={{ marginBottom: -30, marginLeft: -40 }}>
@@ -67,6 +65,7 @@ export function SignIn() {
             placeholder="Digite aqui..."
             accessibilityLabel="Nome completo"
             style={styles.input}
+            onChangeText={(NewName)=> setName(NewName)}
           />
         </View>
 
@@ -87,8 +86,8 @@ export function SignIn() {
             placeholder="Digite aqui..."
             accessibilityLabel="O que você busca ?"
             style={styles.input}
-            onChangeText={(newText) => setName(newText)}
-            value={name}
+            onChangeText={(newText) => setInterest(newText)}
+            value={interest}
             onSubmitEditing={handleInterest}
           />
         </View>
