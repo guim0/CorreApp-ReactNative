@@ -1,19 +1,42 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 type CardOppotunityProps = {
+  userName: string;
   title: string;
   interest: string;
   city: string;
   state: string;
+  badges: [string];
+  description: string;
+  homeService: boolean;
 };
 
 export function CardOppotunity({
+  userName,
   title,
   interest,
   city,
   state,
+  badges,
+  description,
+  homeService,
 }: CardOppotunityProps) {
+  const navigation = useNavigation();
+
+  function GoToCompanyProfile() {
+    navigation.navigate("CompanyProfile", {
+      nameCompany: title,
+      badges: badges,
+      city: city,
+      homeService: homeService,
+      state: state,
+      description: description,
+      interest: interest,
+      userName:userName
+    });
+  }
   return (
     <View style={styles.container}>
       <Text
@@ -48,10 +71,25 @@ export function CardOppotunity({
             />
 
             <Text style={{ fontSize: 16, color: "white" }}>
-              {`${city} ${""} - ${""}`} {state}
+              {`${city}${""}-${""}`} {state}
             </Text>
           </View>
         </View>
+        <Pressable
+          style={{
+            padding: 5,
+            width: 90,
+            height: 40,
+            backgroundColor: "#31333C",
+            borderRadius: 10,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: -30,
+          }}
+          onPress={GoToCompanyProfile}
+        >
+          <Text style={{ color: "white" }}>Ver perfil</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -60,15 +98,16 @@ export function CardOppotunity({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#16171B",
-    padding: 25,
+    padding: 20,
     borderRadius: 10,
     height: 160,
     marginBottom: 10,
     justifyContent: "space-between",
-    minWidth: 290,
+    maxWidth: 325,
   },
   CardDetails: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 });

@@ -24,90 +24,190 @@ export function Home() {
   const MockedOppotunity = [
     {
       key: 0,
+      title: "Espaço negrahSoul",
+      interest: "Trancista",
+      city: "Itaquaquecetuba",
+      state: "SP",
+      homeService: true,
+      badges: [
+        {
+          name: "Casamento",
+        },
+        {
+          name: "Festas",
+        },
+        {
+          name: "Espaço empoderado",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Atendimento à domicìlio",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
+    },
+    {
+      key: 1,
       title: "Romeu dos anjos",
       interest: "Música",
       city: "Guarulhos",
       state: "SP",
+      homeService: true,
+      badges: [
+        {
+          name: "Casamento",
+        },
+        {
+          name: "Festas",
+        },
+        {
+          name: "Ambiente de alegria",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Evento",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
     },
     {
-      key: 1,
+      key: 2,
       title: "Artisings masters cube",
       interest: "Desenho/arte",
       city: "Itaim Paulista",
       state: "SP",
+      homeService: false,
+      badges: [
+        {
+          name: "Empresas",
+        },
+        {
+          name: "Logos",
+        },
+        {
+          name: "StartUp",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Branding",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
     },
     {
-      key: 2,
+      key: 3,
       title: "Heart - a paixão está no ar",
       interest: "Música",
       city: "Suzano",
       state: "SP",
+      homeService: false,
+      badges: [
+        {
+          name: "Casamento",
+        },
+        {
+          name: "Festas",
+        },
+        {
+          name: "Ambiente de alegria",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Evento",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
     },
     {
-      key: 3,
+      key: 4,
       title: "Programação e estrutura HTML",
       interest: "Tecnologia",
       city: "São Miguel Paulista",
       state: "SP",
-    },
-    {
-      key: 4,
-      title: "Leitura de Mangas Junji Ito",
-      interest: "Arte",
-      city: "Liberdade",
-      state: "SP",
+      homeService: false,
+      badges: [
+        {
+          name: "Oportunidade",
+        },
+        {
+          name: "Inovação",
+        },
+        {
+          name: "Ambiente de alegria",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Evento",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
     },
     {
       key: 5,
+      title: "Barbearia Soares",
+      interest: "Serviços",
+      city: "Guarulhos",
+      state: "SP",
+      homeService: true,
+      badges: [
+        {
+          name: "Casamentos",
+        },
+        {
+          name: "Eventos",
+        },
+        {
+          name: "Espaço empoderado",
+        },
+        {
+          name: "Para todos",
+        },
+        {
+          name: "Atendimento à domicilio",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
+    },
+    {
+      key: 6,
       title: "Zumba ao ar livre",
       interest: "Exercicio",
       city: "Guarulhos",
       state: "SP",
-    },
-    {
-      key: 6,
-      title: "Barbearia Soares",
-      interest: "Serviços",
-      city: "Pimentas",
-      state: "SP",
-    },
-    {
-      key: 7,
-      title: "Manutenção Eletríca",
-      interest: "Serviços",
-      city: "Barueri",
-      state: "SP",
-    },
-    {
-      key: 8,
-      title: "Serralheiro",
-      interest: "Serviços",
-      city: "Itaquaquecetuba",
-      state: "SP",
-    },
-    {
-      key: 9,
-      title: "Mecânico Simas Turbo",
-      interest: "Serviços",
-      city: "Osasco",
-      state: "SP",
-    },
-    {
-      key: 10,
-      title: "Coleta de Agasalhos",
-      interest: "Serviços",
-      city: "São paulo",
-      state: "SP",
+      homeService: false,
+      typeService: [
+        {
+          name: "",
+        },
+      ],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus nunc orci, non mollis nibh tempus ac. Quisque quis sem ac elit commodo blandit nec ut est",
     },
   ];
   return (
     <View style={styles.container}>
-      <View style={{paddingBottom: 20}}>
+      <View style={{ paddingBottom: 20 }}>
         <SearchInput userName={name} />
       </View>
-      <ScrollView contentContainerStyle={{width:'100%'}}>
+      <ScrollView contentContainerStyle={{ width: "100%" }}>
         {MockedOppotunity.map((items) => (
-          <CardOppotunity {...items} />
+          <CardOppotunity userName={name} {...items} />
         ))}
       </ScrollView>
     </View>

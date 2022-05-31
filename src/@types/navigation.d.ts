@@ -6,6 +6,16 @@ export declare global {
       Home: {
         name: string
       };
+      CompanyProfile:{
+        userName: string
+        nameCompany: string,
+        interest: string,
+        city: string,
+        state: string,
+        badges: [string],
+        description: string
+        homeService: boolean
+      }
     }
   }
 }

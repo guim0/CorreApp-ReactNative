@@ -13,8 +13,7 @@ import { ButtonLabel } from "../components/ButtonLabel";
 import { useNavigation } from "@react-navigation/native";
 
 export function SignIn() {
-const [name, setName] = useState<string>('')
-
+  const [name, setName] = useState<string>("");
   const [interest, setInterest] = useState<string>("");
   const [interestsItems, setInterestItems] = useState([]);
 
@@ -24,11 +23,10 @@ const [name, setName] = useState<string>('')
   }
 
   function GoToHome() {
-    navigation.navigate("Home", {name: name});
+    navigation.navigate("Home", { name: name });
   }
 
   const handleInterest = () => {
-
     //@ts-ignore
     setInterestItems([...interestsItems, interest]);
     setInterest("");
@@ -41,12 +39,18 @@ const [name, setName] = useState<string>('')
           style={{ flexDirection: "row", alignItems: "center" }}
           onPress={BacktoSubmit}
         >
-          <Image style={{ marginRight: 10 }} source={require("../assets/arrow.png")}></Image>
+          <Image
+            style={{ marginRight: 10 }}
+            source={require("../assets/arrow.png")}
+          ></Image>
           <Text style={{ fontSize: 14, color: "white", fontWeight: "700" }}>
             Voltar
           </Text>
         </Pressable>
-        <Image source={require("../assets/iconCorre.png")} style={{ width: 45, height: 45 }} />
+        <Image
+          source={require("../assets/iconCorre.png")}
+          style={{ width: 45, height: 45 }}
+        />
       </View>
       {interest !== "" && (
         <Text style={{ color: "white" }}> Você digitou: {interest}</Text>
@@ -65,7 +69,7 @@ const [name, setName] = useState<string>('')
             placeholder="Digite aqui..."
             accessibilityLabel="Nome completo"
             style={styles.input}
-            onChangeText={(NewName)=> setName(NewName)}
+            onChangeText={(NewName) => setName(NewName)}
           />
         </View>
 
@@ -114,9 +118,15 @@ const [name, setName] = useState<string>('')
         </View>
 
         <View style={styles.SubmitArea}>
-          <Pressable style={styles.submitButton} onPress={GoToHome}>
-            <Text style={styles.submitButtonText}>Registre-se</Text>
-          </Pressable>
+          {name !== "" ? (
+            <Pressable style={styles.submitButton} onPress={GoToHome}>
+              <Text style={styles.submitButtonText}>Registre-se</Text>
+            </Pressable>
+          ) : (
+            <View style={styles.submitButtonDisable}>
+              <Text style={styles.submitButtonText}>Registre-se</Text>
+            </View>
+          )}
         </View>
       </View>
     </ScrollView>
@@ -166,6 +176,15 @@ const styles = StyleSheet.create({
     width: 260,
     marginBottom: 10,
     backgroundColor: "#ECBD15",
+  },
+  submitButtonDisable: {
+    borderRadius: 4,
+    alignItems: "center",
+    padding: 10,
+    width: 260,
+    marginBottom: 10,
+    backgroundColor: "#ECBD15",
+    opacity: 0.2,
   },
   submitButtonText: {
     fontSize: 20,
