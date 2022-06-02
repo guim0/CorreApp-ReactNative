@@ -27,8 +27,8 @@ export function SignAVisit() {
 
   const navigation = useNavigation();
 
-  function goToNewApointment(){
-    navigation.navigate("NewAppointments",{nameCompany:nameCompany})
+  function goToNewApointment() {
+    navigation.navigate("NewAppointments", { nameCompany: nameCompany });
   }
   function BackToCompanyDetails() {
     navigation.goBack();

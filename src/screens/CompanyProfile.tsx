@@ -63,7 +63,7 @@ export function CompanyProfile() {
       <Text
         style={{
           color: "white",
-          textAlign: "center",
+          width: "90%",
           fontSize: 30,
           marginTop: 20,
           fontWeight: "600",

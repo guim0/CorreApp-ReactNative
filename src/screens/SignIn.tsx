@@ -42,7 +42,7 @@ export function SignIn() {
           <Image
             style={{ marginRight: 10 }}
             source={require("../assets/arrow.png")}
-          />
+          ></Image>
           <Text style={{ fontSize: 14, color: "white", fontWeight: "700" }}>
             Voltar
           </Text>
@@ -107,7 +107,7 @@ export function SignIn() {
           }}
         >
           {interestsItems.map((items) => {
-            return <ButtonLabel {...items}/>;
+            return <ButtonLabel name={items} />;
           })}
         </View>
 
