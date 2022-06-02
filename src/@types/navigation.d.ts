@@ -36,6 +36,8 @@ export declare global {
       NewAppointments:{
         nameCompany: string
       }
+
+      WorkerWelcome: undefined
     }
   }
 }

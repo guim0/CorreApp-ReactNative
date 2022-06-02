@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Image, Pressable } from "react-native";
+import { View, StyleSheet, Text, Image, Pressable, Platform } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -31,29 +31,30 @@ export function Welcome() {
           !CORRE
         </Text>
         <Text style={styles.titleText}>Olá, seja bem vindx!</Text>
-        <Text style={{ fontSize: 14, color: "#C6C6C6" }}>
+        <Text style={{ fontSize:  Platform.OS ===  'ios' ? 14 : 16, color: "#C6C6C6" }}>
          Somos uma solução focada em serviços e prestações dos mesmos, para você usuario encontrar o que precisa!
         </Text>
       </View>
       <View style={styles.SubmitOrRegister}>
         <Pressable style={styles.registerButton} onPress={goToSignIn}>
-          <Text style={{ fontSize: 20, fontWeight: "700" }}>Registre-se</Text>
+          <Text style={{ fontSize:  20, fontWeight: "700" }}>Registre-se</Text>
         </Pressable>
-        <View>
+        <View style={{alignItems:"center"}}>
           <Text
             style={{
-              fontSize: 10,
+              fontSize: Platform.OS ===  'ios' ? 14 : 16,
               color: "#F3F3F3",
             }}
           >
-            já fez um corre com a gente ou já é nosso cliente ? {"   "}
-            <Pressable>
+           Já tem uma conta? {" "}
+            <Pressable style={{ marginBottom: Platform.OS === 'ios' ? -2 : 0,}}>
               <Text
                 style={{
                   color: "#ECBD15",
-                  fontSize: 10,
+                  fontSize: Platform.OS ===  'ios' ? 14 : 16,
                   textDecorationColor: "#ECBD15",
                   textDecorationLine: "underline",
+                  lineHeight: Platform.OS === 'ios' ? 0 : 1
                 }}
               >
                 Entre Aqui!
@@ -72,7 +73,6 @@ const styles = StyleSheet.create({
   },
   clouds: {
     position: "absolute",
-
     top: 70,
     left: -5,
   },
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: "center",
     padding: 10,
-    marginBottom: 10,
+    width: Platform.OS ===  'ios' ? 300 : 350,
+    marginBottom: 20,
     backgroundColor: "#ECBD15",
   },
 });

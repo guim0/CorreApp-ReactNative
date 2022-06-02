@@ -6,6 +6,7 @@ import {
   Pressable,
   TextInput,
   ScrollView,
+  Platform,
 } from "react-native";
 import React, { Component } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -39,7 +40,7 @@ export function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: Platform.OS !== 'ios' ? 10: 60,
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0D0D0D",

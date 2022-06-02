@@ -8,6 +8,7 @@ import { CompanyProfile } from "../screens/CompanyProfile";
 import { SignAVisit } from "../screens/SignAVisit";
 import { NewAppointment } from "../screens/NewAppointment";
 
+
 const { Screen, Navigator } = createNativeStackNavigator();
 
 export function UserRoutes() {
@@ -16,9 +17,9 @@ export function UserRoutes() {
       <Screen name="Welcome" component={Welcome} />
       <Screen name="SignIn" component={SignIn} />
       <Screen name="Home" component={Home} />
-      <Screen name="CompanyProfile" component={CompanyProfile}/>
-      <Screen name="SignAVisit" component={SignAVisit}/>
-      <Screen name="NewAppointments" component={NewAppointment}/>
+      <Screen name="CompanyProfile" component={CompanyProfile} />
+      <Screen name="SignAVisit" component={SignAVisit} />
+      <Screen name="NewAppointments" component={NewAppointment} />
     </Navigator>
   );
 }

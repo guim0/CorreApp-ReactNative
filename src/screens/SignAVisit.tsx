@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   ScrollView,
+  Platform,
 } from "react-native";
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -55,6 +56,8 @@ export function SignAVisit() {
           color: "white",
           fontSize: 20,
           fontWeight: "700",
+          width: "80%",
+          marginTop:10
         }}
       >
         Compromissos
@@ -62,7 +65,7 @@ export function SignAVisit() {
       <View style={styles.schedules}>
         <ScrollView
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ maxWidth: 280 }}
+          contentContainerStyle={{ maxWidth:  Platform.OS === 'ios' ? 280 :320 }}
         >
           <View
             style={{
@@ -109,7 +112,7 @@ export function SignAVisit() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop:  Platform.OS === 'ios' ? 60 : 10,
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",

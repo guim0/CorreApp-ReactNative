@@ -6,6 +6,9 @@ import {
   Pressable,
   TextInput,
   ScrollView,
+
+  useWindowDimensions,
+  Platform
 } from "react-native";
 
 import React, { useState } from "react";
@@ -16,6 +19,7 @@ export function SignIn() {
   const [name, setName] = useState<string>("");
   const [interest, setInterest] = useState<string>("");
   const [interestsItems, setInterestItems] = useState([]);
+  const {width, height} = useWindowDimensions()
 
   const navigation = useNavigation();
   function BacktoSubmit() {
@@ -135,7 +139,7 @@ export function SignIn() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: Platform.OS !== 'ios' ? 5 : 50,
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0D0D0D",
@@ -164,10 +168,12 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 20,
     marginBottom: 20,
+    fontSize: Platform.OS === 'ios' ? 14 : 16,
+    height: Platform.OS !== 'ios' ? 60 : 65,
   },
   SubmitArea: {
     marginTop: 20,
-    marginBottom: 60,
+    marginBottom: Platform.OS !== 'ios' ? 30 : 40,
   },
   submitButton: {
     borderRadius: 4,

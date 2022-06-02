@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable, Image } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image, Platform } from "react-native";
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { ButtonLabel } from "../components/ButtonLabel";
@@ -74,7 +74,7 @@ export function CompanyProfile() {
       <View
         style={{ flexDirection: "row", alignItems: "flex-start", width: "90%" }}
       >
-        <View style={{ marginTop: 40, marginBottom: 20 }}>
+        <View style={{ marginTop: Platform.OS === 'ios' ? 40 : 30, marginBottom: Platform.OS === 'ios' ? 20 : 5 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Image
               style={{ marginRight: 10 }}
@@ -98,14 +98,14 @@ export function CompanyProfile() {
               {`${city} ${""} - ${""}`} {state}
             </Text>
           </View>
-          <View style={{ flexDirection: "row", flexWrap: "wrap", width: 280 }}>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", width: Platform.OS === 'ios' ? 280 : 300 }}>
             {badges.map((items) => (
               <ButtonLabel {...items} />
             ))}
           </View>
         </View>
         <Image
-          style={{ marginLeft: -30, width: 120, height: 150, marginTop: 30 }}
+          style={{ marginLeft: Platform.OS === 'ios' ? -30 : 0, width: 120, height: 150, marginTop: 30 }}
           source={require("../assets/companyNameIcon.png")}
         />
       </View>
@@ -171,7 +171,7 @@ export function CompanyProfile() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: Platform.OS !== 'ios' ? 10 :  60,
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0D0D0D",
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     backgroundColor: "#31333C",
     flexDirection: "column",
-    padding: 40,
+    padding: Platform.OS === 'ios' ? 40 : 50,
     alignItems: "baseline",
     paddingBottom: 120,
     marginTop: 10,

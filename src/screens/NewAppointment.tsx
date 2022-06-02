@@ -173,6 +173,8 @@ export function NewAppointment() {
           color: "white",
           fontSize: 20,
           fontWeight: "700",
+          width: "80%",
+          marginTop: Platform.OS === 'ios' ? 0 : 20
         }}
       >
         Agende um horario 😉
@@ -253,7 +255,7 @@ export function NewAppointment() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: Platform.OS === 'ios' ?  60 : 10,
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0D0D0D",
