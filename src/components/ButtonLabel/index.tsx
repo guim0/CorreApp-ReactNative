@@ -5,11 +5,9 @@ type ButtonLabelProps = {
   name: string;
 };
 
-export function ButtonLabel({name }: ButtonLabelProps) {
+export function ButtonLabel({ name }: ButtonLabelProps) {
   return (
-    <Pressable
-      style={styles.button }
-    >
+    <Pressable style={styles.button}>
       <Text style={styles.textOn}>{name}</Text>
     </Pressable>
   );
@@ -20,13 +18,12 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#ECBD15",
     borderRadius: 6,
-    fontWeight: '700',
+    fontWeight: "700",
     alignItems: "center",
-    marginRight:10,
-    marginTop:10
+    marginRight: 10,
+    marginTop: 10,
   },
   textOn: {
-    fontWeight: '700'
+    fontWeight: "700",
   },
-
 });

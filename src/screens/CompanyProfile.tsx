@@ -14,15 +14,37 @@ type ParamProps = {
   }[];
   description: string;
   homeService: boolean;
+  schedule: {
+    timeStart: string;
+    timeEnd: string;
+    title: string;
+    description: string;
+    late: boolean;
+  }[];
 };
 
 export function CompanyProfile() {
   const route = useRoute();
-  const { nameCompany, userName, interest, state, city, badges, description } =
-    route.params as ParamProps;
+  const {
+    nameCompany,
+    userName,
+    interest,
+    state,
+    city,
+    badges,
+    description,
+    schedule,
+  } = route.params as ParamProps;
   const navigation = useNavigation();
   function BacktoList() {
     navigation.navigate("Home", { name: userName });
+  }
+
+  function goSignAVisit() {
+    navigation.navigate("SignAVisit", {
+      nameCompany: nameCompany,
+      schedule: schedule,
+    });
   }
 
   return (
@@ -41,8 +63,9 @@ export function CompanyProfile() {
       <Text
         style={{
           color: "white",
-          fontSize: 35,
-          marginTop: 30,
+          textAlign: "center",
+          fontSize: 30,
+          marginTop: 20,
           fontWeight: "600",
         }}
       >
@@ -51,7 +74,7 @@ export function CompanyProfile() {
       <View
         style={{ flexDirection: "row", alignItems: "flex-start", width: "90%" }}
       >
-        <View style={{ marginTop: 30 }}>
+        <View style={{ marginTop: 40, marginBottom: 20 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Image
               style={{ marginRight: 10 }}
@@ -63,7 +86,7 @@ export function CompanyProfile() {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              marginTop: 10,
+              marginTop: 5,
             }}
           >
             <Image
@@ -82,7 +105,7 @@ export function CompanyProfile() {
           </View>
         </View>
         <Image
-          style={{ marginLeft: -20, width: 120, height: 180, marginTop: 50 }}
+          style={{ marginLeft: -30, width: 120, height: 150, marginTop: 30 }}
           source={require("../assets/companyNameIcon.png")}
         />
       </View>
@@ -91,9 +114,9 @@ export function CompanyProfile() {
         <Text
           style={{
             color: "#ECBD15",
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: "700",
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
           DESCRIÇÃO
@@ -101,7 +124,7 @@ export function CompanyProfile() {
         <Text
           style={{
             color: "white",
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: "700",
             marginBottom: 10,
           }}
@@ -111,24 +134,33 @@ export function CompanyProfile() {
         <Text
           style={{
             color: "white",
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: "400",
             lineHeight: 25,
-            marginBottom: 10
           }}
         >
           {description}
         </Text>
         <View>
-          <Pressable style={styles.buttonVisit}>
+          <Pressable style={styles.buttonVisit} onPress={goSignAVisit}>
             <Text style={{ fontSize: 20, fontWeight: "700", color: "#0D0D0D" }}>
               Marcar uma visita
             </Text>
           </Pressable>
           <Pressable style={styles.buttonWpp}>
-            <Text style={{ fontSize: 20, fontWeight: "700", color: "#ECBD15" }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "700",
+                color: "#ECBD15",
+                alignItems: "baseline",
+              }}
+            >
               Chamar no WhatsApp{" "}
-              <Image source={require("../assets/whatsapp.png")} />
+              <Image
+                style={{ width: 16, height: 16 }}
+                source={require("../assets/whatsapp.png")}
+              />
             </Text>
           </Pressable>
         </View>
@@ -145,7 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0D0D0D",
   },
   header: {
-    width: "80%",
+    width: "90%",
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",
@@ -157,15 +189,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#31333C",
     flexDirection: "column",
     padding: 40,
+    alignItems: "baseline",
+    paddingBottom: 120,
+    marginTop: 10,
     width: "100%",
   },
   buttonVisit: {
     padding: 20,
+
     backgroundColor: "#ECBD15",
     width: 300,
     borderRadius: 8,
     alignItems: "center",
-    marginBottom: 15
+    marginTop: 20,
+    marginBottom: 10,
   },
   buttonWpp: {
     padding: 20,

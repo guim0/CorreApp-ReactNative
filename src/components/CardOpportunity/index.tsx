@@ -11,6 +11,7 @@ type CardOppotunityProps = {
   badges: [string];
   description: string;
   homeService: boolean;
+  schedule:[]
 };
 
 export function CardOppotunity({
@@ -22,6 +23,8 @@ export function CardOppotunity({
   badges,
   description,
   homeService,
+  schedule
+ 
 }: CardOppotunityProps) {
   const navigation = useNavigation();
 
@@ -34,7 +37,8 @@ export function CardOppotunity({
       state: state,
       description: description,
       interest: interest,
-      userName:userName
+      userName: userName,
+      schedule: schedule,
     });
   }
   return (
